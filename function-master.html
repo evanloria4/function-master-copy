@@ -21,13 +21,26 @@
     // Do your work in function-master.js
 
     /* global objectValues */
+    /*
+    I: Object 
+    O: Return objet values in an array
+    C: n/a
+    E: n/a
+    */
     QUnit.test( "objectValues() : Should take an object and return its values in an array", function( assert ) {
       var objectOne = {a: "one", b: "two", ponies: "crayons", dingle: "dangle"};
       var objectTwo = {c: "three", d: "four", crayons: "ponies", dangle: "dingle"};
       assert.deepEqual(objectValues(objectOne), ["one","two","crayons","dangle"]);
       assert.deepEqual(objectValues(objectTwo), ["three","four","ponies","dingle"]);
     });
-
+    /*
+    I: Object
+    O: Return object keys in a string seperated with a space
+    C: n/a
+    E: n/a
+    */
+   // Use Object.keys to create an array of all the object keys
+   // Use .join() to join values of the array into a string
     /* global keysToString */
     QUnit.test("keysToString() : Should take an object and return all its keys in a string each separated with a space", function(assert){
       var objectOne = {a: "one", b: "two", ponies: "crayons", dingle: "dangle"};
@@ -35,7 +48,14 @@
       assert.equal(keysToString(objectOne), "a b ponies dingle");
       assert.equal(keysToString(objectTwo), "c d crayons dangle");
     });
-
+    /*
+    I: Object
+    O: Values of object turned into a string value each seperated by a space
+    C: n/a
+    E: n/a
+    */
+   // Create storage array and set it equal to Object.values()
+   // Return the storage array forced into a string using .join() method
     /* global valuesToString */
     QUnit.test("valuesToString() : Should take an object and return all its string values in a string each separated with a space", function(assert){
       var objectOne = {a: "one", b: "two", ponies: "crayons", something: {}, dingle: "dangle"};
@@ -43,13 +63,33 @@
       assert.equal(valuesToString(objectOne), "one two crayons dangle");
       assert.equal(valuesToString(objectTwo), "three four ponies dingle");
     });
-
+    /*
+    I: Argument
+    O: Return array
+    C: n/a
+    E: n/a
+    */
+   /** Use if conditional to test 
+    * if argument is an array using Array.isArray() method
+    * Eliminate non-object object that will return object with type of method (null and date)
+    * if argument is an object
+    */
+    // Return array if arguement is an array
+    // Return an bject if arguement is an object literal
     /* global arrayOrObject  */
     QUnit.test("arrayOrObject() : Should take one argument and return 'array' if its an array and 'object' if its an object", function(assert){
       assert.equal(arrayOrObject({a:"one"}), "object");
       assert.equal(arrayOrObject([1,2,{}]), "array");
     });
-
+    /*
+    I: String of one word
+    O: Return word with first letter capitalized
+    C:
+    E:
+    */
+   // Access the fist character on the string 
+   // use .toUpperCase() to capitalize the character
+   // Concatenate the first character with a slice of the rest of the string
     /* global capitalizeWord*/
     QUnit.test("capitalizeWord() : Should take a string of one word, and return the word with its first letter capitalized", function(assert){
       assert.equal(capitalizeWord("greg"), "Greg");
@@ -58,6 +98,18 @@
     });
 
     /* global  capitalizeAllWords*/
+    /*
+    I: String of words
+    O: String of words with first letters all capitalized
+    C: n/a
+    E: n/a
+    */
+   // intiialize new array equal to the value of using .split() method to split the string into an array
+   // Create another empty storage array for the new capital words
+   // Iterate over new array using for loop and charAt to access the first character at each index
+   // Use a second for loop and .slice() method to access the remianing characters in each words
+   // Concatenate the capital letters with the .slcie() portion of the word
+    //
     QUnit.test("capitalizeAllWords() : Should take a string of words and return a string with all the words capitalized ", function(assert){
       assert.equal(capitalizeAllWords("one two three four"), "One Two Three Four");
       assert.equal(capitalizeAllWords("please excuse my dear aunt sally"), "Please Excuse My Dear Aunt Sally");
